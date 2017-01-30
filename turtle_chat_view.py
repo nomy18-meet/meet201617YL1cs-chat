@@ -1,25 +1,54 @@
 #2016-2017 PERSONAL PROJECTS: TurtleChat!
 #WRITE YOUR NAME HERE!
+ #You must
+##
+##i. Make a class called TextBox that is a subclass of TextInput, and
+##
+##must implement the two abstract methods of TextInput
+##
+##ii. Make a class called SendButton that is a subclass of Button and must
+##
+##implement the one abstract method of Button.
+##
+##iii. Complete the class called View, implementing the methods that are
+##
+##incomplete. (When you implement a method, delete the pass​ keyword.)
+##
+##c. To do a full test, open three terminals again. As in Step 2, start the server in one
+##
+##terminal, and in the other two, run turtle_chat _view.py like this:
+##
+##$ python3 turtle_chat_view.py
+##
+##Test as often as you can - rather than writing code for a long time, test early and
+##
+##correct problems as you go.
+"NOMY"
 
-#####################################################################################
-#                                   IMPORTS                                         #
-#####################################################################################
-#import the turtle module
-#import the Client class from the turtle_chat_client module
-#Finally, from the turtle_chat_widgets module, import two classes: Button and TextInput
-#####################################################################################
+import turtle
+from turtle_chat_client import Client
+from turtle_chat_widgets import Button, TextInput
+
+#TextBox                                         
 #####################################################################################
 
-#####################################################################################
-#                                   TextBox                                         #
-#####################################################################################
-#Make a class called TextBox, which will be a subclass of TextInput.
+class TextBox (TextInput):
 #Because TextInput is an abstract class, you must implement its abstract
 #methods.  There are two:
-#
-#draw_box
+    def draw_box(self):
+        print ("hello world")
+        
+        turtle.penup()
+        turtle.goto(pos)
+        turtle.pendown()
+        turtle.goto(100,0)
+        turtle.goto(100,100)
+        turtle.goto(-100,100)
+        turtle.goto(-100,0)
+##        
 #write_msg
-#
+    def write_msg(self):
+        print ("hi")
 #Hints:
 #1. in draw_box, you will draw (or stamp) the space on which the user's input
 #will appear.
@@ -52,13 +81,8 @@
 #HINT: You may want to override the __init__ method so that it takes one additional
 #      input: view.  This will be an instance of the View class you will make next
 #      That class will have methods inside of it to help
-#      you send messages and update message displays.
-#####################################################################################
-#####################################################################################
+#      you send messages and update message displays
 
-
-##################################################################
-#                             View                               #
 ##################################################################
 #Make a new class called View.  It does not need to have a parent
 #class mentioned explicitly.
@@ -66,17 +90,17 @@
 #Read the comments below for hints and directions.
 ##################################################################
 ##################################################################
-class View:
-    _MSG_LOG_LENGTH=5 #Number of messages to retain in view
-    _SCREEN_WIDTH=300
-    _SCREEN_HEIGHT=600
-    _LINE_SPACING=round(_SCREEN_HEIGHT/2/(_MSG_LOG_LENGTH+1))
-
-    def __init__(self,username='Me',partner_name='Partner'):
-        '''
-        :param username: the name of this chat user
-        :param partner_name: the name of the user you are chatting with
-        '''
+##class View:
+##    _MSG_LOG_LENGTH=5 #Number of messages to retain in view
+##    _SCREEN_WIDTH=300
+##    _SCREEN_HEIGHT=600
+##    _LINE_SPACING=round(_SCREEN_HEIGHT/2/(_MSG_LOG_LENGTH+1))
+##
+##    def __init__(self,username='Me',partner_name='Partner'):
+##        '''
+##        :param username: the name of this chat user
+##        :param partner_name: the name of the user you are chatting with
+##        '''
         ###
         #Store the username and partner_name into the instance.
         ###
@@ -97,7 +121,7 @@ class View:
         #   self.msg_queue.insert(0,a_msg_string)
         #or at the end of the list using
         #   self.msg_queue.append(a_msg_string)
-        self.msg_queue=[]
+        #self.msg_queue=[]
 
         ###
         #Create one turtle object for each message to display.
@@ -174,17 +198,18 @@ class View:
 #it once you have a working view, trying to run you chat#
 #view in different ways.                                #
 #########################################################
-if __name__ == '__main__':
-    my_view=View()
-    _WAIT_TIME=200 #Time between check for new message, ms
-    def check() :
-        msg_in=my_view.my_client.receive()
-        if not(msg_in is None):
-            if msg_in==my_view.my_client._END_MSG:
-                print('End message received')
-                sys.exit()
-            else:
-                my_view.msg_received(msg_in)
-        turtle.ontimer(check,_WAIT_TIME) #Check recursively
-    check()
+##if __name__ == '__main__':
+##    my_view=View()
+##    _WAIT_TIME=200 #Time between check for new message, ms
+##    def check() :
+##        msg_in=my_view.my_client.receive()
+##        if not(msg_in is None):
+##            if msg_in==my_view.my_client._END_MSG:
+##                print('End message received')
+##                sys.exit()
+##            else:
+##                my_view.msg_received(msg_in)
+##        turtle.ontimer(check,_WAIT_TIME) #Check recursively
+##    check()
+##    
     turtle.mainloop()
