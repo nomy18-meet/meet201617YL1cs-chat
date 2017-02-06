@@ -39,16 +39,18 @@ class TextBox (TextInput):
         print ("hello world")
         
         turtle.penup()
-        turtle.goto(pos)
+        turtle.goto(self.pos)
         turtle.pendown()
-        turtle.goto(100,0)
-        turtle.goto(100,100)
-        turtle.goto(-100,100)
-        turtle.goto(-100,0)
+        turtle.goto(self.height)
+        turtle.goto(self.width)
+        turtle.goto(self)
+        turtle.penup()
 ##        
 #write_msg
     def write_msg(self):
-        print ("hi")
+        self.setup_listeners()
+        print(self.new_message)
+        self.writer.goto(
 #Hints:
 #1. in draw_box, you will draw (or stamp) the space on which the user's input
 #will appear.
@@ -56,11 +58,11 @@ class TextBox (TextInput):
 #2. All TextInput objects have an internal turtle called writer (i.e. self will
 #   have something called writer).  You can write new text with it using code like
 #
-#   self.writer.write(a_string_variable)
+        self.writer.write("a_string_variable")
 #
 #   and you can erase that text using
 #
-#   self.writer.clear()
+        #self.writer.clear()
 #
 #3. If you want to make a newline character (i.e. go to the next line), just add
 #   \r to your string.  Test it out at the Python shell for practice
@@ -97,13 +99,14 @@ class TextBox (TextInput):
 ##    _LINE_SPACING=round(_SCREEN_HEIGHT/2/(_MSG_LOG_LENGTH+1))
 ##
 ##    def __init__(self,username='Me',partner_name='Partner'):
-##        '''
+
+##    '''
 ##        :param username: the name of this chat user
 ##        :param partner_name: the name of the user you are chatting with
 ##        '''
-        ###
-        #Store the username and partner_name into the instance.
-        ###
+##        ###
+##        #Store the username and partner_name into the instance.
+##        ###
 
         #Make a new client object and store it in this instance.
 
@@ -198,18 +201,19 @@ class TextBox (TextInput):
 #it once you have a working view, trying to run you chat#
 #view in different ways.                                #
 #########################################################
-##if __name__ == '__main__':
-##    my_view=View()
-##    _WAIT_TIME=200 #Time between check for new message, ms
-##    def check() :
-##        msg_in=my_view.my_client.receive()
-##        if not(msg_in is None):
-##            if msg_in==my_view.my_client._END_MSG:
-##                print('End message received')
-##                sys.exit()
-##            else:
-##                my_view.msg_received(msg_in)
-##        turtle.ontimer(check,_WAIT_TIME) #Check recursively
-##    check()
-##    
+if __name__ == '__main__':
+    my_view=View()
+    _WAIT_TIME=200 #Time between check for new message, ms
+    def check() :
+        msg_in=my_view.my_client.receive()
+        if not(msg_in is None):
+            if msg_in==my_view.my_client._END_MSG:
+                print('End message received')
+                sys.exit()
+            else:
+                my_view.msg_received(msg_in)
+        turtle.ontimer(check,_WAIT_TIME) #Check recursively
+    check()
+    
+
     turtle.mainloop()
