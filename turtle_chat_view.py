@@ -41,11 +41,14 @@ class TextBox (TextInput):
         turtle.penup()
         turtle.goto(self.pos)
         turtle.pendown()
-        turtle.goto(self.height)
-        turtle.goto(self.width)
-        turtle.goto(self)
+        turtle.goto(self.width,0)
+        turtle.goto(self.width,self.height)
+        turtle.goto(-self.width,self.height)
+        turtle.goto(-self.width,-self.height)
+        turtle.goto(self.pos)
+        turtle.stamp()
         turtle.penup()
-##        
+##      
 #write_msg
     def write_msg(self):
         self.setup_listeners()
@@ -142,78 +145,83 @@ class TextBox (TextInput):
         #and any other remaining setup functions you have invented.
         ###
 
-    def send_msg(self):
-        '''
-        You should implement this method.  It should call the
-        send() method of the Client object stored in this View
-        instance.  It should also call update the list of messages,
-        self.msg_queue, to include this message.  It should
-        clear the textbox text display (hint: use the clear_msg method).
-        It should call self.display_msg() to cause the message
-        display to be updated.
-        '''
-        pass
+##    def send_msg(self):
+##        '''
+##        You should implement this method.  It should call the
+##        send() method of the Client object stored in this View
+##        instance.  It should also call update the list of messages,
+##        self.msg_queue, to include this message.  It should
+##        clear the textbox text display (hint: use the clear_msg method).
+##        It should call self.display_msg() to cause the message
+##        display to be updated.
+##        '''
+##        pass
+##
+##    def get_msg(self):
+##        return self.textbox.get_msg()
+##
+##    def setup_listeners(self):
+##        '''
+##        Set up send button - additional listener, in addition to click,
+##        so that return button will send a message.
+##        To do this, you will use the turtle.onkeypress function.
+##        The function that it will take is
+##        self.send_btn.fun
+##        where send_btn is the name of your button instance
+##
+##        Then, it can call turtle.listen()
+##        '''
+##        pass
+##
+##    def msg_received(self,msg):
+##        '''
+##        This method is called when a new message is received.
+##        It should update the log (queue) of messages, and cause
+##        the view of the messages to be updated in the display.
+##
+##        :param msg: a string containing the message received
+##                    - this should be displayed on the screen
+##        '''
+##        print(msg) #Debug - print message
+##        show_this_msg=self.partner_name+' says:\r'+ msg
+##        #Add the message to the queue either using insert (to put at the beginning)
+##        #or append (to put at the end).
+##        #
+##        #Then, call the display_msg method to update the display
+##
+##    def display_msg(self):
+##        '''
+##        This method should update the messages displayed in the screen.
+##        You can get the messages you want from self.msg_queue
+##        '''
+##        pass
+################################################################
+################################################################
+##
+##
+###########################################################
+###Leave the code below for now - you can play around with#
+###it once you have a working view, trying to run you chat#
+###view in different ways.                                #
+###########################################################
+##if __name__ == '__main__':
+##    my_view=View()
+##    _WAIT_TIME=200 #Time between check for new message, ms
+##    def check() :
+##        msg_in=my_view.my_client.receive()
+##        if not(msg_in is None):
+##            if msg_in==my_view.my_client._END_MSG:
+##                print('End message received')
+##                sys.exit()
+##            else:
+##                my_view.msg_received(msg_in)
+##        turtle.ontimer(check,_WAIT_TIME) #Check recursively
+##    check()
+##    
+'''
+turtle.mainloop()#
+'''
 
-    def get_msg(self):
-        return self.textbox.get_msg()
-
-    def setup_listeners(self):
-        '''
-        Set up send button - additional listener, in addition to click,
-        so that return button will send a message.
-        To do this, you will use the turtle.onkeypress function.
-        The function that it will take is
-        self.send_btn.fun
-        where send_btn is the name of your button instance
-
-        Then, it can call turtle.listen()
-        '''
-        pass
-
-    def msg_received(self,msg):
-        '''
-        This method is called when a new message is received.
-        It should update the log (queue) of messages, and cause
-        the view of the messages to be updated in the display.
-
-        :param msg: a string containing the message received
-                    - this should be displayed on the screen
-        '''
-        print(msg) #Debug - print message
-        show_this_msg=self.partner_name+' says:\r'+ msg
-        #Add the message to the queue either using insert (to put at the beginning)
-        #or append (to put at the end).
-        #
-        #Then, call the display_msg method to update the display
-
-    def display_msg(self):
-        '''
-        This method should update the messages displayed in the screen.
-        You can get the messages you want from self.msg_queue
-        '''
-        pass
-##############################################################
-##############################################################
 
 
-#########################################################
-#Leave the code below for now - you can play around with#
-#it once you have a working view, trying to run you chat#
-#view in different ways.                                #
-#########################################################
-if __name__ == '__main__':
-    my_view=View()
-    _WAIT_TIME=200 #Time between check for new message, ms
-    def check() :
-        msg_in=my_view.my_client.receive()
-        if not(msg_in is None):
-            if msg_in==my_view.my_client._END_MSG:
-                print('End message received')
-                sys.exit()
-            else:
-                my_view.msg_received(msg_in)
-        turtle.ontimer(check,_WAIT_TIME) #Check recursively
-    check()
-    
 
-    turtle.mainloop()
