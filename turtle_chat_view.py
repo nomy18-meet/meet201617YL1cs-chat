@@ -36,7 +36,7 @@ class TextBox (TextInput):
 #Because TextInput is an abstract class, you must implement its abstract
 #methods.  There are two:
     def draw_box(self):
-        print ("hello world")
+      
         
         turtle.penup()
         turtle.goto(self.pos)
@@ -46,14 +46,16 @@ class TextBox (TextInput):
         turtle.goto(-self.width,self.height)
         turtle.goto(-self.width,-self.height)
         turtle.goto(self.pos)
-        turtle.stamp()
+        #turtle.stamp()
         turtle.penup()
 ##      
 #write_msg
     def write_msg(self):
+        self.writer.goto(-self.width,self.height)
+        self.writer.write("tt")
         self.setup_listeners()
         print(self.new_message)
-        self.writer.goto(
+
 #Hints:
 #1. in draw_box, you will draw (or stamp) the space on which the user's input
 #will appear.
@@ -96,7 +98,7 @@ class TextBox (TextInput):
 ##################################################################
 ##################################################################
 ##class View:
-##    _MSG_LOG_LENGTH=5 #Number of messages to retain in view
+##    _MSG_LOG_LENGTH=5 #Number of messa`ges to retain in view
 ##    _SCREEN_WIDTH=300
 ##    _SCREEN_HEIGHT=600
 ##    _LINE_SPACING=round(_SCREEN_HEIGHT/2/(_MSG_LOG_LENGTH+1))
