@@ -77,6 +77,17 @@ class TextBox (TextInput):
 #####################################################################################
 #                                  SendButton                                       #
 #####################################################################################
+class SendButton(Button):
+    def fun(self,x=None,y=None):
+        self.view.send_msg()
+
+    def __init__(self,view,my_turtle=None,shape=None,pos=(0,0)):
+        self.view=view
+
+        look at the module 4 in class snake look for the init function
+        
+
+    
 #Make a class called SendButton, which will be a subclass of Button.
 #Button is an abstract class with one abstract method: fun.
 #fun gets called whenever the button is clicked.  It's jobs will be to
