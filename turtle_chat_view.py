@@ -7,10 +7,11 @@ from turtle_chat_widgets import Button, TextInput
 
 #TextBox                                         
 #####################################################################################
-
 class TextBox (TextInput):
 #Because TextInput is an abstract class, you must implement its abstract
 #methods.  There are two:
+        
+
     def draw_box(self):
         self.Box=turtle.clone()
         self.Box.penup()
@@ -23,7 +24,7 @@ class TextBox (TextInput):
         self.Box.goto(self.pos)
         #turtle.stamp()
         self.Box.penup()
-##      
+
 #write_msg
     def write_msg(self):
         self.setup_listeners()
@@ -218,6 +219,7 @@ class View:
         #self.display_msg.msg_queue()
         self.msg.clear()
         self.msg.write(self.partner_name+' says:\r'+self.msg_queue[-1])
+    
         #self.msg_queue()
         #self.display_msg()
 
