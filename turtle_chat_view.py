@@ -35,7 +35,7 @@ class TextBox (TextInput):
         self.writer.write(self.new_msg)
 
         print(self.new_msg)
-bb=TextBox()
+#bb=TextBox()
 
 #Hints:
 #1. in draw_box, you will draw (or stamp) the space on which the user's input
@@ -113,7 +113,7 @@ class View:
 
         #Make a new client object and store it in this instance.
         self.my_client=Client()
-        self.turtle.setup=turtle.setup(width=200, height=200, startx=0, starty=0)
+        turtle.setup(width=200, height=200, startx=0, starty=0)
 
 
         #Set screen dimensions using turtle.setup
@@ -131,7 +131,7 @@ class View:
         #or at the end of the list using
         #   self.msg_queue.append(a_msg_string)
         self.msg_queue=[]
-        self.msg_queue.insert(0,a_msg_string)
+        #self.msg_queue.insert(0,"")
 
 
         ###
@@ -148,7 +148,6 @@ class View:
         self.TextBox=TextBox()
         self.SendButton=SendButton(self)
         self.setup_listeners()
-        self.draw_box()
         
         
 
@@ -201,9 +200,9 @@ class View:
 
         :param msg: a string containing the message received this should be displayed on the screen
         '''
-        print(new_msg) #Debug - print message
+        print(msg) #Debug - print message
         show_this_msg=self.partner_name+' says:\r'+ msg
-        self.msg_queue.append(self.TextBox.new_msg)
+        self.msg_queue.append(msg)
         self.display_msg() 
 
         #Add the message to the queue either using insert (to put at the beginning)
@@ -247,9 +246,9 @@ if __name__ == '__main__':
         turtle.ontimer(check,_WAIT_TIME) #Check recursively
     check()
     
-'''
-turtle.mainloop()#
-'''
+
+    turtle.mainloop()
+
 
 
 
