@@ -10,9 +10,11 @@ from turtle_chat_widgets import Button, TextInput
 class TextBox (TextInput):
 #Because TextInput is an abstract class, you must implement its abstract
 #methods.  There are two:
-        
+
 
     def draw_box(self):
+        screen= turtle.Screen()
+        screen.bgpic("hj.gif")
         self.Box=turtle.clone()
         self.Box.penup()
         self.Box.goto(self.pos)
@@ -28,6 +30,7 @@ class TextBox (TextInput):
 #write_msg
     def write_msg(self):
         self.setup_listeners()
+        #self.writer.write(self, move=False, align="left", font=("Arial", 8, "normal"))
         self.writer.goto(-self.width+6,self.height-20)
         #not working!!!
         self.writer.clear()
@@ -114,7 +117,7 @@ class View:
 
         #Make a new client object and store it in this instance.
         self.my_client=Client()
-        turtle.setup(width=200, height=200, startx=0, starty=0)
+        turtle.setup(300, 600)
 
 
         #Set screen dimensions using turtle.setup
